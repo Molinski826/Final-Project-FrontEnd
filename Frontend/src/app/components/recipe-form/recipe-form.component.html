@@ -1,5 +1,37 @@
 <form>
     <p>Recipe Name: </p>
     <input name="recipe name"  type="text" [(ngModel)]="formRecipe.name"/>
+	<table>
+		<thead>
+			<tr>
+				<td>Name</td>
+				<td>Amount</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			@for (ingredient of formRecipe.ingredients; track $index) {
+				<tr>
+					<td>{{ingredient.name}}</td>
+					<td><span>{{ingredient.amount}}</span>&nbsp;<span>{{ingredient.unit}}</span></td>
+					<td>
+						<button type="button" (click)="removeIngredient($index)">X</button>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<h2>Add Ingredient</h2>
+	<div>
+		<label>Name</label>
+		<label>Amount</label>
+		<label>Unit</label>
+	</div>
+	<div>
+		<input type="text" name="ingredient-name" [(ngModel)]="formIngredient.name" />
+		<input type="number" name="ingredient-amount" [(ngModel)]="formIngredient.amount" />
+		<input type="text" name="ingredient-unit" [(ngModel)]="formIngredient.unit" />
+	</div>
+	<button type="button" (click)="addIngredient()">Add Ingredient</button>
     <button (click)="emitCreate()">SUBMIT</button>
 </form>`

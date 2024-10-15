@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Recipes } from '../../models/recipes';
+import { Ingredients } from '../../models/ingredients';
 
 @Component({
   selector: 'app-recipe-form',
@@ -12,10 +13,24 @@ import { Recipes } from '../../models/recipes';
 export class RecipeFormComponent {
   @Output() Created = new EventEmitter<Recipes>();
 
-  formRecipe:Recipes = {} as Recipes;
+  formRecipe:Recipes = this.getDefaultRecipe();
+  formIngredient:Ingredients = {} as Ingredients;
 
   emitCreate() {
     this.Created.emit(this.formRecipe);
-    this.formRecipe = {} as Recipes;
+    this.formRecipe = this.getDefaultRecipe();
+  }
+
+  addIngredient() {
+	this.formRecipe.ingredients.push(this.formIngredient);
+	this.formIngredient = {...this.formIngredient};
+  }
+
+  getDefaultRecipe() : Recipes {
+	return {"id": 0, "name": "", "ingredients": [], "userid": 0};
+  }
+
+  removeIngredient(index: number) {
+	this.formRecipe.ingredients.splice(index, 1);
   }
 }
