@@ -24,4 +24,6 @@ export class IngredientComponent {
       this.service.getIngredient(1026).subscribe
       (response => this.ingredient= response);
   }
+
+  
 }
