@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Recipes } from '../../models/recipes';
 import { Ingredients } from '../../models/ingredients';
+import { Results } from '../../models/results';
 
 @Component({
   selector: 'app-recipe-form',
@@ -15,6 +16,8 @@ export class RecipeFormComponent {
 
   formRecipe:Recipes = this.getDefaultRecipe();
   formIngredient:Ingredients = {} as Ingredients;
+  searchIngredient:string = "";
+  searchVisible:boolean = false;
 
   emitCreate() {
     this.Created.emit(this.formRecipe);
@@ -33,4 +36,16 @@ export class RecipeFormComponent {
   removeIngredient(index: number) {
 	this.formRecipe.ingredients.splice(index, 1);
   }
-}
+
+  addSearch(){
+    this.searchVisible = true;
+  }
+
+  getSearch(result:Results){
+    this.searchVisible = false;
+    this.formIngredient.name = result.name;
+    this.formIngredient.productId = result.id;
+  
+  }
+  }
+
