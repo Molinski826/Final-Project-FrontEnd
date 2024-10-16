@@ -1,1 +1,7 @@
 <p>{{recipe.name}}</p>
+@for (ingredients of recipe.recipeIngredients; track ingredients.id) {
+    <p>{{ingredients.name}}</p>
+    <p>{{ingredients.amount}}</p>
+    <p>{{ingredients.unit}}</p>
+}
+
