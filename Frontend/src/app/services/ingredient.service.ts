@@ -15,8 +15,8 @@ export class IngredientService {
   url:string = environment.apiDomain;
   constructor(private http:HttpClient) { }
 
-  getIngredient(id:number):Observable<IngredientDetails>{
-    return this.http.get<IngredientDetails>(`${this.url}/api/ingredient/${id}`);
+  getIngredient(id:number, amount:number = 0, unit:string = ""):Observable<IngredientDetails>{
+    return this.http.get<IngredientDetails>(`${this.url}/api/ingredient/${id}?amount=${amount}&unit=${unit}`);
   }
 
   searchIngredient(name:string):Observable<SearchResults>

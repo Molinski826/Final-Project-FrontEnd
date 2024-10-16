@@ -1,7 +1,19 @@
 <p>{{recipe.name}}</p>
-@for (ingredients of recipe.recipeIngredients; track ingredients.id) {
+<p>{{insulinPerServing}} insulin per serving</p>
+<p>{{recipe.servings}}</p>
+<input type="number" placeholder="blood glucose" [(ngModel)]="bloodGlucose" name="glucose" (change)="updateInsulinDose()"/>
+<input type="number" placeholder="correction ratio" [(ngModel)]="correctionFactor" name="correction" (change)="updateInsulinDose()"/>
+<input type="number" placeholder="carb ratio" [(ngModel)]="carbRatio" name="carb-ratio" (change)="updateInsulinDose()"/>
+@for (ingredients of extendedIngredients; track $index) {
     <p>{{ingredients.name}}</p>
     <p>{{ingredients.amount}}</p>
     <p>{{ingredients.unit}}</p>
+	<!--
+	<ul>
+		@for (nutrient of ingredients.nutrition.nutrients; track $index) {
+			<li><span>{{nutrient.name}}</span><span>{{nutrient.percentOfDailyNeeds}}%</span></li>
+		}
+	</ul>
+	-->
 }
 

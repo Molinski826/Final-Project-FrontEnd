@@ -34,7 +34,7 @@ export class RecipeFormComponent {
 	}
 
 	getDefaultRecipe(): Recipes {
-		return { "id": 0, "name": "", "recipeIngredients": [], "userid": null };
+		return { "id": 0, "name": "", "recipeIngredients": [], "userid": null, "servings": 1 };
 	}
 
 	removeIngredient(index: number) {

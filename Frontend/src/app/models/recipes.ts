@@ -5,5 +5,6 @@ export interface Recipes {
     id:number;
     name:string;
     userid:string | null;
+	servings:number;
 	recipeIngredients: Ingredients[];
 }
