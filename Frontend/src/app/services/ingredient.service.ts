@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { SearchResults } from '../models/search-results';
 import { Recipes } from '../models/recipes';
+import { IngredientDetails } from '../models/ingredient-details';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class IngredientService {
   url:string = environment.apiDomain;
   constructor(private http:HttpClient) { }
 
-  getIngredient(id:number):Observable<Ingredients>{
-    return this.http.get<Ingredients>(`${this.url}/api/ingredient/${id}`);
+  getIngredient(id:number):Observable<IngredientDetails>{
+    return this.http.get<IngredientDetails>(`${this.url}/api/ingredient/${id}`);
   }
 
   searchIngredient(name:string):Observable<SearchResults>
@@ -29,4 +30,11 @@ export class IngredientService {
 		return this.http.post(`${this.url}/api/Recipes`, recipe);
 	}
 
+  getRecipes():Observable<Recipes[]>{
+    return this.http.get<Recipes[]>(`${this.url}/api/Recipes`);
+  }
+
+  getRecipe(id:string):Observable<Recipes>{
+    return this.http.get<Recipes>(`${this.url}/api/Recipes/${id}`);
+  }
 }
