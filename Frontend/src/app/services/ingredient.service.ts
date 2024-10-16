@@ -4,6 +4,7 @@ import { Ingredients } from '../models/ingredients';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { SearchResults } from '../models/search-results';
+import { Recipes } from '../models/recipes';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,10 @@ export class IngredientService {
   console.log(name);
   return this.http.get<SearchResults>(`${this.url}/api/search/${name}`)
 }
+
+	submitRecipe(recipe:Recipes) : Observable<object> {
+		console.log(recipe);
+		return this.http.post(`${this.url}/api/Recipes`, recipe);
+	}
 
 }

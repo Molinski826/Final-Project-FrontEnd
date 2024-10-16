@@ -4,6 +4,6 @@ import { Users } from "./users";
 export interface Recipes {
     id:number;
     name:string;
-    userid:Number;
-	ingredients: Ingredients[];
+    userid:string | null;
+	recipeIngredients: Ingredients[];
 }
