@@ -28,11 +28,11 @@
 		<label>Unit</label>
 	</div>
 	<div>
-		<input type="text" name="ingredient-search" [(ngModel)]="searchTerm" />
+		<input placeholder="Name" name="ingredient-search" [(ngModel)]="searchTerm" />
 		<button type="button" (click)="addSearch()">Search</button>
 		<p>{{formIngredient.name}}</p>
-		<input type="number" name="ingredient-amount" [(ngModel)]="formIngredient.amount" />
-		<input type="text" name="ingredient-unit" [(ngModel)]="formIngredient.unit" />
+		<input placeholder="Amount" name="ingredient-amount" [(ngModel)]="formIngredient.amount" />
+		<input  placeholder="Unit" type="text" name="ingredient-unit" [(ngModel)]="formIngredient.unit" />
 	</div>
 	<button type="button" (click)="addIngredient()">Add Ingredient</button>
     <button (click)="emitCreate()">SUBMIT</button>
