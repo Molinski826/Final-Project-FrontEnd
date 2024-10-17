@@ -6,13 +6,6 @@
         "get"
       ],
       "rewrite": "/"
-    },
-    {
-      "route": "/Recipes",
-      "methods": [
-        "get"
-      ],
-      "rewrite": "/"
     }
   ]
 }
