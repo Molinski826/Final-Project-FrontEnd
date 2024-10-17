@@ -1,7 +1,14 @@
 {
   "routes": [
     {
-      "route": ".*",
+      "route": "/*",
+      "methods": [
+        "get"
+      ],
+      "rewrite": "/"
+    },
+    {
+      "route": "/Recipe",
       "methods": [
         "get"
       ],
