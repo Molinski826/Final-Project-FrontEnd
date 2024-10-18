@@ -1,4 +1,14 @@
-<a routerLink="/">Home</a>
-<a routerLink="/Recipe">Recipes</a>
-<a routerLink="/MyRecipes">My Recipes</a>
-<router-outlet></router-outlet>
+<header>
+	<nav>
+		<a routerLink="/" class="home">Satiety</a>
+		@if (isLoggedIn()) {
+			<a routerLink="/Recipe">Recipes</a>
+			<a routerLink="/MyRecipes">My Recipes</a>
+		}
+	</nav>
+	<button>Login</button>
+</header>
+<div id="content">
+	<router-outlet></router-outlet>
+</div>
+<footer>&copy; Martina Basquez, Wren Grasley, Joseph Molinski 2024</footer>

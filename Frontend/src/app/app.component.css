@@ -1,3 +1,42 @@
-a {
-    margin: 5px;
+header {
+	position: sticky;
+	top: 0px;
+	background-color: #fff;
+	padding: 0px .5rem;
+	display: flex;
+	gap: .5rem;
+}
+
+.home {
+	font-family: "Shrikhand", serif;
+	color: #4d5;
+	text-decoration: none;
+	font-size: 1.5em;
+}
+
+nav {
+	margin: .5rem 0px;
+	flex-grow: 1;
+}
+
+button {
+	margin: .5rem 0px;
+}
+
+:host {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+#content {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+footer {
+	background-color: #fff;
+	font-size: .75rem;
+	font-style: italic;
 }

@@ -5,6 +5,7 @@ import { RecipeFormComponent } from "./components/recipe-form/recipe-form.compon
 import { SearchIngredientsComponent } from "./components/search-ingredients/search-ingredients.component";
 import { RecipeListComponent } from "./components/recipe-list/recipe-list.component";
 import { ApiClientService } from './services/api-client.service';
+import { IngredientService } from './services/ingredient.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ import { ApiClientService } from './services/api-client.service';
 })
 export class AppComponent {
 	title = 'Satiety';
-	constructor(private router: Router, private api:ApiClientService) { }
+	constructor(private router: Router, private api:ApiClientService, private service:IngredientService) { }
 
 	ngOnInit() {
 		this.api.loggedOutError.subscribe(_ => {
@@ -23,5 +24,9 @@ export class AppComponent {
 				this.router.navigate(["/"]);
 			}
 		});
+	}
+
+	isLoggedIn() : boolean {
+		return this.service.isLoggedIn();
 	}
 }

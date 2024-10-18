@@ -1,7 +1,21 @@
-h1, p {
+header {
   font-family: "Shrikhand", serif;
   margin: auto;
   text-align: center;
+  flex-grow: 1;
+  color: #fff;
 }
 
+:host {
+	display: flex;
+	flex-grow: 1;
+}
 
+main {
+	display: flex;
+	flex-grow: 1;
+}
+
+aside {
+	width: 300px;
+}
