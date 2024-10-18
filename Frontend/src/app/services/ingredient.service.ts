@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
+import { catchError, Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { SearchResults } from '../models/search-results';
 import { Recipes } from '../models/recipes';
@@ -14,7 +14,11 @@ import { CookieService } from 'ngx-cookie-service';
 export class IngredientService {
 
   	url:string = environment.apiDomain;
-  	constructor(private http:HttpClient, private api:ApiClientService, private cookies:CookieService) { }
+	isLoggedIn: boolean;
+
+  	constructor(private http:HttpClient, private api:ApiClientService, private cookies:CookieService) {
+		this.isLoggedIn = this.cookies.check(".AspNetCore.Identity.Application");
+	}
 
   	getIngredient(id:number, amount:number = 0, unit:string = ""):Observable<IngredientDetails> {
     	return this.http.get<IngredientDetails>(`${this.url}/api/ingredient/${id}?amount=${amount}&unit=${unit}`);
@@ -36,12 +40,10 @@ export class IngredientService {
     	return this.http.get<Recipes>(`${this.url}/api/Recipes/${id}`);
   	}
 
-	isLoggedIn() : boolean {
-		return this.cookies.check(".AspNetCore.Identity.Application");
-	}
-
 	login(email:string, password:string): Observable<Object> {
-		return this.http.post(`${this.url}/api/user/login?useCookies=true`, {email: email, password: password});
+		return this.http.post(`${this.url}/api/user/login?useCookies=true`, {email: email, password: password}).pipe(tap(
+			_ => this.isLoggedIn = true
+		));
 	}
 
 	register(email:string, password:string): Observable<Object> {
@@ -50,5 +52,6 @@ export class IngredientService {
 
 	logout(): void {
 		this.cookies.delete(".AspNetCore.Identity.Application");
+		this.isLoggedIn = false;
 	}
 }
