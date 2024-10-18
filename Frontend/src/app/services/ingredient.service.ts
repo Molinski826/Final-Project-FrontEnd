@@ -41,7 +41,8 @@ export class IngredientService {
   	}
 
 	login(email:string, password:string): Observable<Object> {
-		return this.http.post(`${this.url}/api/user/login?useCookies=true`, {email: email, password: password}).pipe(tap(
+		return this.http.post(`${this.url}/api/user/login?useCookies=true`, {email: email, password: password}, {withCredentials: true})
+		.pipe(tap(
 			_ => this.isLoggedIn = true
 		));
 	}

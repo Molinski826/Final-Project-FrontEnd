@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiDomain: "http://localhost:5053" // replace this with your back API's localhost url 
+    apiDomain: "https://localhost:7242" // replace this with your back API's localhost url 
 };
