@@ -1,0 +1,32 @@
+.result {
+	cursor: pointer;
+	margin: 0px;
+	padding: .375rem;
+}
+
+.result:hover {
+	color: #2b3;
+}
+
+.result::before {
+	content: "\F231";
+	font-family: 'bootstrap-icons';
+	line-height: 0;
+	font-size: 1.5em;
+	vertical-align: middle;
+	opacity: 0;
+	transform: translateX(-.5em);
+	transition: transform .25s, opacity .25s;
+	display:inline-block;
+	color: #2b3;
+	margin-left: -.5em;
+}
+
+.result:hover::before {
+	transform: translateX(0em);
+	opacity: 1;
+}
+
+.result:nth-child(odd) {
+	background-color: #eee;
+}

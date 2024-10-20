@@ -1,44 +1,73 @@
-<form>
-    <p>Recipe Name: </p>
-    <input name="recipe name"  type="text" [(ngModel)]="formRecipe.name"/>
-	<label>Servings: </label>
-	<input name="servings" type="number" [(ngModel)]="formRecipe.servings" />
-	<table>
-		<thead>
-			<tr>
-				<td>Name</td>
-				<td>Amount</td>
-				<td></td>
-			</tr>
-		</thead>
-		<tbody>
-			@for (ingredient of formRecipe.recipeIngredients; track $index) {
-				<tr>
-					<td>{{ingredient.name}}</td>
-					<td><span>{{ingredient.amount}}</span>&nbsp;<span>{{ingredient.unit}}</span></td>
-					<td>
-						<button type="button" (click)="removeIngredient($index)">X</button>
-					</td>
-				</tr>
-			}
-		</tbody>
-	</table>
-	<h2>Add Ingredient</h2>
-	<div>
-		<label>Name</label>
-		<label>Amount</label>
-		<label>Unit</label>
-	</div>
-	<div>
-		<input placeholder="Name" name="ingredient-search" [(ngModel)]="searchTerm" />
-		<button type="button" (click)="addSearch()">Search</button>
-		<p>{{formIngredient.name}}</p>
-		<input placeholder="Amount" name="ingredient-amount" [(ngModel)]="formIngredient.amount" />
-		<input  placeholder="Unit" type="text" name="ingredient-unit" [(ngModel)]="formIngredient.unit" />
-	</div>
-	<button type="button" (click)="addIngredient()">Add Ingredient</button>
-    <button (click)="emitCreate()">SUBMIT</button>
-</form>
-@if (searchVisible) {
-	<app-search-ingredients [search]="searchIngredient" (selected)="getSearch($event)" />
-}
+<main class="container main-box">
+	<h1>Add a recipe</h1>
+	<hr>
+	<form class="form">
+		<fieldset>
+			<legend>General information</legend>
+			<div class="split-even">
+				<div class="input-group">
+					<label for="i-recipe-name" class="input-group-text">Recipe Name: </label>
+					<input name="recipe name" class="form-control"  type="text" [(ngModel)]="formRecipe.name" placeholder="My recipe" id="i-recipe-name"/>
+				</div>
+				<div class="input-group">
+					<input name="servings" type="number" class="form-control" [(ngModel)]="formRecipe.servings" id="i-serving-count"/>
+					<label for="i-serving-count" class="input-group-text">Servings</label>
+				</div>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Ingredients</legend>
+			<table class="table">
+				<thead>
+					<tr>
+						<td>Name</td>
+						<td>Amount</td>
+						<td class="small-col">&nbsp;</td>
+					</tr>
+				</thead>
+				<tbody>
+					@for (ingredient of formRecipe.recipeIngredients; track $index) {
+						<tr>
+							<td>{{ingredient.name}}</td>
+							<td><span>{{ingredient.amount}}</span>&nbsp;<span>{{ingredient.unit}}</span></td>
+							<td class="small-col">
+								<button type="button" class="btn btn-outline-danger icon" (click)="removeIngredient($index)">&#xF5DE;</button>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</fieldset>
+		<fieldset>
+			<legend>Add Ingredient</legend>
+			<div class="input-group">
+				<input placeholder="Ingredient" class="form-control" name="ingredient-search" [(ngModel)]="searchTerm" id="i-ingredient-search"/>
+				<button class="btn btn-outline-primary" (click)="addSearch()">Search</button>
+			</div>
+			<div class="split-even" style="margin-top:.5rem; margin-left:.75rem;">
+				<div>
+					<p>Name</p>
+					<p class="button-size">&nbsp;{{formIngredient.name}}</p>
+				</div>
+				<div>
+					<p>Amount</p>
+					<div class="input-group">
+						<input placeholder="Amount" class="form-control" name="ingredient-amount" [(ngModel)]="formIngredient.amount" />
+						<input placeholder="Unit" class="form-control" type="text" name="ingredient-unit" [(ngModel)]="formIngredient.unit" />
+					</div>
+					<sub class="form-text">Example: 2 cups</sub>
+				</div>
+				<div class="no-flex">
+					<p>&nbsp;</p>
+					<button type="button" (click)="addIngredient()" class="btn btn-primary">Add Ingredient</button>
+				</div>
+			</div>
+		</fieldset>
+		<hr>
+		<div class="spread">
+			<button class="btn btn-outline-primary">&lt; My recipes</button>
+			<button (click)="emitCreate()" class="btn btn-primary">Create Recipe</button>
+		</div>
+	</form>
+	<app-search-ingredients [class.hidden]="!searchVisible" [search]="searchIngredient" (selected)="getSearch($event)" />
+</main>

@@ -1,3 +1,70 @@
 body {
 	background-color: #4d5;
 }
+
+.main-box {
+	border-radius: .75rem;
+	background-color: #fff;
+	padding: .5rem;
+	box-shadow: -5px 9px 23px 0px rgba(0, 65, 14, 0.3);
+}
+
+main.main-box {
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+
+.split-even {
+	display: flex;
+	gap: .5rem;
+}
+
+.split-even > * {
+	flex-grow: 1;
+}
+
+.no-flex {
+	flex-grow: 0;
+}
+
+.spread {
+	display: flex;
+	gap: .5rem;
+	justify-content: space-between;
+}
+
+fieldset {
+	border: 1px solid #eee;
+	border-radius: .75rem;
+	margin: 1rem 0px;
+	padding: .5rem;
+	padding-top: 0px;
+}
+
+fieldset > legend {
+	float: unset;
+	width: unset;
+	padding: 0px .5rem;
+	margin-left: 1rem;
+}
+
+.button-size {
+	padding: .375rem 0px;
+	min-height: 1ex;
+}
+
+.small-col {
+    width: 2em;
+    text-align: center;
+}
+
+.small-col .btn {
+	padding: .375rem;
+	aspect-ratio: 1;
+	width: 100%;
+	line-height:0;
+}
+
+.icon {
+	font-family: 'bootstrap-icons';
+}

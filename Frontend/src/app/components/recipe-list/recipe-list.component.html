@@ -1,3 +1,7 @@
-@for(r of recipeList; track r.id){
-    <a routerLink="/Recipe/{{r.id}}">{{r.name}}</a><br>      
-}
+<main class="main-box container">
+	<h1>My Recipes</h1>
+	<hr>
+	@for(r of recipeList; track r.id){
+		<a routerLink="/Recipe/{{r.id}}">{{r.name}}</a><br>      
+	}
+</main>
