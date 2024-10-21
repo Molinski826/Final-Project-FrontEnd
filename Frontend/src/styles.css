@@ -1,5 +1,6 @@
 body {
-	background-color: #4d5;
+	background-image: url("app/assets/background.png");
+	background-repeat: repeat;
 }
 
 .main-box {
@@ -73,4 +74,8 @@ fieldset > legend {
 
 .icon {
 	font-family: 'bootstrap-icons';
+}
+
+a {
+	color: #4d5;
 }
