@@ -56,6 +56,7 @@ fieldset > legend {
 .button-size {
 	padding: .375rem 0px;
 	min-height: 1ex;
+	margin: 0px;
 }
 
 .small-col {

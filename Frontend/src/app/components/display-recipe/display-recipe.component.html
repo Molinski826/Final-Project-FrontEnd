@@ -1,19 +1,36 @@
-<p>{{recipe.name}}</p>
-<p>{{insulinPerServing}} insulin per serving</p>
-<p>{{recipe.servings}}</p>
-<input type="number" placeholder="blood glucose" [(ngModel)]="bloodGlucose" name="glucose" (change)="updateInsulinDose()"/>
-<input type="number" placeholder="correction ratio" [(ngModel)]="correctionFactor" name="correction" (change)="updateInsulinDose()"/>
-<input type="number" placeholder="carb ratio" [(ngModel)]="carbRatio" name="carb-ratio" (change)="updateInsulinDose()"/>
-@for (ingredients of extendedIngredients; track $index) {
-    <p>{{ingredients.name}}</p>
-    <p>{{ingredients.amount}}</p>
-    <p>{{ingredients.unit}}</p>
-	<!--
-	<ul>
-		@for (nutrient of ingredients.nutrition.nutrients; track $index) {
-			<li><span>{{nutrient.name}}</span><span>{{nutrient.percentOfDailyNeeds}}%</span></li>
-		}
-	</ul>
-	-->
-}
-
+<main class="container main-box">
+	<h1>{{recipe.name}}</h1>
+	<h2><span>{{recipe.servings}}</span> Servings</h2>
+	<hr>
+	<h3>Ingredients</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<td>Name</td>
+				<td>Amount</td>
+				<td class="small-col"></td>
+			</tr>
+		</thead>
+		<tbody>
+			@for (ingredients of extendedIngredients; track $index) {
+				<tr>
+					<td>{{ingredients.name}}</td>
+					<td><span>{{ingredients.amount}}</span> <span>{{ingredients.unit}}</span></td>
+					<td class="small-col"><a class="icon" routerLink="/Ingredient/{{ingredients.id}}">&#xF431;</a></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<div class="split-even">
+		<div class="input-group">
+			<span class="input-group-text">Blood Glucose: </span>
+			<input type="number" class="form-control" [(ngModel)]="bloodGlucose" name="glucose" (change)="updateInsulinDose()"/>
+			<span class="input-group-text">ml</span>
+		</div>
+		<p class="button-size">{{insulinPerServing | number : '1.1-2'}} ml insulin required</p>
+	</div>
+	<!-- TODO move these to user account data -->
+	<input type="number" placeholder="correction ratio" [(ngModel)]="correctionFactor" name="correction" (change)="updateInsulinDose()"/>
+	<input type="number" placeholder="carb ratio" [(ngModel)]="carbRatio" name="carb-ratio" (change)="updateInsulinDose()"/>
+	<!-- -->
+</main>

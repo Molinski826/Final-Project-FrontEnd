@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { IngredientService } from '../../services/ingredient.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Recipes } from '../../models/recipes';
 import { IngredientDetails } from '../../models/ingredient-details';
 import { forkJoin, Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-display-recipe',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink, DecimalPipe],
   templateUrl: './display-recipe.component.html',
   styleUrl: './display-recipe.component.css'
 })
