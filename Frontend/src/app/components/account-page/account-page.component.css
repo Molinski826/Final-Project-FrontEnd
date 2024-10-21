@@ -1,0 +1,23 @@
+h2 {
+	font-size: 1.2em;
+	display: flex;
+	color: #666;
+}
+
+h5 {
+	display: flex;
+}
+
+h2 span, h5 label {
+	flex-grow: 1;
+}
+
+h2 button {
+	color: #aaa;
+	background:none;
+	border:none;
+}
+
+h2 button.active {
+	color: #4d5;
+}

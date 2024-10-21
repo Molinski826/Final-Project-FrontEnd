@@ -28,4 +28,14 @@ export class ApiClientService {
 			throw e;
 		}));
 	}
+
+	put<T>(path: string, body: any) : Observable<T> {
+		return this.http.put<T>(path, body, {withCredentials: true}).pipe(catchError((e, o) => {
+			if (e.status == HttpStatusCode.Unauthorized) {
+				this.loggedOutError.emit(path);
+				return of();
+			}
+			throw e;
+		}));
+	}
 }

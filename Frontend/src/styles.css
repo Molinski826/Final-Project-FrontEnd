@@ -79,3 +79,11 @@ fieldset > legend {
 a {
 	color: #4d5;
 }
+
+.btn-primary {
+	--bs-btn-color: #fff;
+}
+.btn-primary, .btn-outline-primary {
+	--bs-btn-hover-color: #fff;
+	--bs-btn-active-color: #fff;
+}

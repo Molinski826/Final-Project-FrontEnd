@@ -1,0 +1,55 @@
+<main class="container main-box">
+	<h1>My Account</h1>
+	<h2>
+		<span>Welcome back, {{user.name}}</span>
+		<button (click)="edit()" class="icon" [class.active]="editing">&#xF4C9;</button>
+	</h2>
+	<form>
+		<fieldset>
+			<legend>General</legend>
+			<div class="split-even">
+				<label for="i-name" class="button-size">Name</label>
+				@if (editing) {
+					<input type="text" class="form-control" id="i-name" name="name" [(ngModel)]="formUser.name" />
+				} @else {
+					<span class="button-size">{{user.name}}</span>
+				}
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Dietary</legend>
+			<h5>
+				<label for="i-diabetic">Diabetes</label>
+				@if (editing) {
+					<input type="checkbox" name="diabetic" id="i-diabetic" [(ngModel)]="formUser.diabetic" />
+				}
+			</h5>
+			@if ((!editing && user.diabetic) || (editing && formUser.diabetic)) {
+				<div class="split-even">
+					<div>
+						<label class="button-size" for="i-carb-ratio">Carb Ratio</label>
+						@if (editing) {
+							<input class="form-control" type="number" placeholder="10" [(ngModel)]="formUser.carbRatio" name="carb-ratio" id="i-carb-ratio"/>
+						} @else {
+							<p class="button-size">{{user.carbRatio}}</p>
+						}
+					</div>
+					<div>
+						<label class="button-size" for="i-correction">Correction Factor</label>
+						@if (editing) {
+							<input class="form-control" type="number" placeholder="40" [(ngModel)]="formUser.correctionFactor" id="i-correction" name="correction"/>
+						} @else {
+							<p class="button-size">{{user.correctionFactor}}</p>
+						}
+					</div>
+				</div>
+			}
+		</fieldset>
+		@if (editing) {
+			<div class="spread">
+				<button (click)="discardChanges()" class="btn btn-outline-primary">Discard changes</button>
+				<button (click)="saveChanges()" class="btn btn-primary">Save changes</button>
+			</div>
+		}
+	</form>
+</main>

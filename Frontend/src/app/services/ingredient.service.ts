@@ -7,6 +7,7 @@ import { Recipes } from '../models/recipes';
 import { IngredientDetails } from '../models/ingredient-details';
 import { ApiClientService } from './api-client.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Users } from '../models/users';
 
 @Injectable({
   providedIn: 'root'
@@ -54,5 +55,13 @@ export class IngredientService {
 	logout(): void {
 		this.cookies.delete(".AspNetCore.Identity.Application");
 		this.isLoggedIn = false;
+	}
+
+	getUser(): Observable<Users> {
+		return this.api.get(`${this.url}/api/user`);
+	}
+
+	updateUser(user: Users) : Observable<Users> {
+		return this.api.put(`${this.url}/api/user`, user);
 	}
 }

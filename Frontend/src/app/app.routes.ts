@@ -7,6 +7,7 @@ import { RecipeFormComponent } from './components/recipe-form/recipe-form.compon
 import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AccountPageComponent } from './components/account-page/account-page.component';
 
 export const routes: Routes = [
     {path:"", component:HomeComponent},
@@ -15,5 +16,6 @@ export const routes: Routes = [
     {path:"MyRecipes", component:RecipeListComponent},
     {path:"Login", component:LoginComponent},
     {path:"Register", component:RegisterComponent},
+	{path:"MyAccount", component:AccountPageComponent},
     {path: "**", component:PageNotFoundComponent} 
 ];

@@ -6,4 +6,6 @@ export interface Users {
     medit:boolean;
     vegan:boolean;
     vegi:boolean;
+	carbRatio:number;
+	correctionFactor:number;
 }
