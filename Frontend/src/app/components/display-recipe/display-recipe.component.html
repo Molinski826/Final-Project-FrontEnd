@@ -21,16 +21,14 @@
 			}
 		</tbody>
 	</table>
-	<div class="split-even">
-		<div class="input-group">
-			<span class="input-group-text">Blood Glucose: </span>
-			<input type="number" class="form-control" [(ngModel)]="bloodGlucose" name="glucose" (change)="updateInsulinDose()"/>
-			<span class="input-group-text">ml</span>
+	@if (user.diabetic) {
+		<div class="split-even">
+			<div class="input-group">
+				<span class="input-group-text">Blood Glucose: </span>
+				<input type="number" class="form-control" [(ngModel)]="bloodGlucose" name="glucose" (change)="updateInsulinDose()"/>
+				<span class="input-group-text">ml</span>
+			</div>
+			<p class="button-size">{{insulinPerServing | number : '1.1-2'}} ml insulin required</p>
 		</div>
-		<p class="button-size">{{insulinPerServing | number : '1.1-2'}} ml insulin required</p>
-	</div>
-	<!-- TODO move these to user account data -->
-	<input type="number" placeholder="correction ratio" [(ngModel)]="correctionFactor" name="correction" (change)="updateInsulinDose()"/>
-	<input type="number" placeholder="carb ratio" [(ngModel)]="carbRatio" name="carb-ratio" (change)="updateInsulinDose()"/>
-	<!-- -->
+	}
 </main>

@@ -6,6 +6,7 @@ import { IngredientDetails } from '../../models/ingredient-details';
 import { forkJoin, Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
+import { Users } from '../../models/users';
 
 @Component({
   selector: 'app-display-recipe',
@@ -19,10 +20,9 @@ export class DisplayRecipeComponent {
 recipe:Recipes = {}as Recipes;
 extendedIngredients:IngredientDetails[] = [];
 carbsPerServing:number = 0;
-carbRatio:number = 10;
 insulinPerServing:number = 0;
 bloodGlucose:number = 0;
-correctionFactor:number = 40;
+user:Users = {} as Users;
 
   constructor(private service:IngredientService, private route:ActivatedRoute){}
 
@@ -31,7 +31,11 @@ correctionFactor:number = 40;
       response.get("id")
       this.service.getRecipe(response.get("id")?? "").subscribe
       (response => this.setRecipe(response));
-    })
+    });
+	this.service.getUser().subscribe(r => {
+		this.user = r;
+		this.updateInsulinDose();
+	});
   }
 
   setRecipe(recipe:Recipes) : void {
@@ -59,8 +63,8 @@ correctionFactor:number = 40;
   }
 
   updateInsulinDose() : void {
-	this.insulinPerServing = this.carbsPerServing / this.carbRatio;
-	this.insulinPerServing += (this.bloodGlucose - 120) / this.correctionFactor;
+	this.insulinPerServing = this.carbsPerServing / this.user.carbRatio;
+	this.insulinPerServing += (this.bloodGlucose - 120) / this.user.correctionFactor;
   }
 
 }
