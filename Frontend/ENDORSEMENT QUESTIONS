@@ -1,0 +1,47 @@
+C1:Q2:
+
+  - Possibly being phased out -- based on latest version of Angular
+  - Did not use structural directives on website, instead used attribute directives:
+    - routerLink => by extension RouterOutlet?
+      - Attribute form Angular that allows users to navigate between components without it reloading
+      - By extension, anything with a routerLink needs a <router-outlet>
+    - [(ngModel)]
+      - Allows for two-way binding
+
+STRUCTURAL DIRECTIVES:
+  - ngIf
+  - ngFor
+  - ngSwitch
+  - ngTemplate
+
+ATTRIBUTE DIRECTIVES:
+  - routerLink
+  - [(ngModel)]
+  - ngSubmit
+  - ngStyle
+  - ngContainer
+  - ngForm
+  - ngSubmit
+
+C1:Q3:
+@Input() ->
+  - Put in the child component
+    - Gives the child class access to parent class
+@Output() <->
+  - Allow events to be sent from child to parent components
+  - Can also pass data
+  - Needs event emitter
+
+C1:Q4:
+1. Define routes
+2. Add <router-outlet> to app-component
+
+C1:Q5:
+- Dependency injection through constructor
+
+C1:Q6:
+- ng g c components/<component name>
+  1. CSS
+  2. HTML
+  3. TS.spec
+  4. TS

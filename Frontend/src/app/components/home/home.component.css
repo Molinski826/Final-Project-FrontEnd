@@ -22,3 +22,10 @@ aside {
 	flex-direction: column;
 	justify-content: center;
 }
+
+.centerimg {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}

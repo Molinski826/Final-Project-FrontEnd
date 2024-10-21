@@ -12,7 +12,7 @@ import { IngredientService } from '../../services/ingredient.service';
 export class IngredientComponent {
 
   constructor(private service:IngredientService){}
-  
+
   @Input() ingredient:Ingredients|null = null
 
   ngOnInit(){
@@ -21,8 +21,6 @@ export class IngredientComponent {
 
 
   getIngredient(){
-  
-  }
 
-  
+  }
 }

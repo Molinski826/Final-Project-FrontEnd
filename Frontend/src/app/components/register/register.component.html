@@ -1,0 +1,7 @@
+<input type="text" [(ngModel)]="email">Email
+<input type="password" [(ngModel)]="password">Password
+<input type="password" [(ngModel)]="confirm">Confirm
+@if (password != confirm) {
+    <p>Passwords do not match</p>
+}
+<button (click)="register()">Register</button>
