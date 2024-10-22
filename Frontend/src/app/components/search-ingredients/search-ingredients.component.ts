@@ -14,7 +14,7 @@ import { Results } from '../../models/results';
 })
 export class SearchIngredientsComponent {
 @Input() search: string = "";
-@Output() selected:EventEmitter<Results> = new EventEmitter<Results>();
+@Output() selected:EventEmitter<Results|null> = new EventEmitter<Results|null>();
 
 constructor(private service:IngredientService){}
 
@@ -26,6 +26,10 @@ ngOnChanges(){
 
 addIngredient(name:string){
   this.selected.emit(this.results.results.find(response => response.name == name));
+}
+
+exit() : void {
+	this.selected.emit(null);
 }
 
 }

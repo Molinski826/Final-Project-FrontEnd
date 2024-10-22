@@ -30,3 +30,13 @@
 .result:nth-child(odd) {
 	background-color: #eee;
 }
+
+.big {
+	height: 300px;
+	width: 100%;
+	font-size: 3em;
+	font-weight: bold;
+	color: #aaa;
+	line-height: 300px;
+	text-align: center;
+}

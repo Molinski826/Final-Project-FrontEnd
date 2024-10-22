@@ -4,4 +4,9 @@
 	@for(r of results.results; track $index){
 		<P class="result" (click)="addIngredient(r.name)">{{r.name}}</P>
 	}
+	@if (!results.results || results.results.length == 0) {
+		<p class="big">No Results</p>
+	}
+	<hr>
+	<button class="btn btn-outline-primary" (click)="exit()">&lt; Cancel</button>
 </main>

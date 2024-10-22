@@ -5,6 +5,7 @@ import { Ingredients } from '../../models/ingredients';
 import { Results } from '../../models/results';
 import { SearchIngredientsComponent } from "../search-ingredients/search-ingredients.component";
 import { IngredientService } from '../../services/ingredient.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-recipe-form',
@@ -14,7 +15,7 @@ import { IngredientService } from '../../services/ingredient.service';
 	styleUrl: './recipe-form.component.css'
 })
 export class RecipeFormComponent {
-	constructor(private service:IngredientService) {}
+	constructor(private service:IngredientService, private router:Router) {}
 
   	formRecipe: Recipes = this.getDefaultRecipe();
 	formIngredient: Ingredients = {} as Ingredients;
@@ -23,14 +24,16 @@ export class RecipeFormComponent {
 	searchVisible: boolean = false;
 
 	emitCreate() {
-		this.service.submitRecipe(this.formRecipe).subscribe(_ => {
-			this.formRecipe = this.getDefaultRecipe();
+		this.service.submitRecipe(this.formRecipe).subscribe(o => {
+			let recipe: Recipes = o as Recipes;
+			this.router.navigate(["/Recipe/", recipe.id]);
 		});
 	}
 
 	addIngredient() {
 		this.formRecipe.recipeIngredients.push(this.formIngredient);
-		this.formIngredient = { ...this.formIngredient };
+		this.formIngredient = { } as Ingredients;
+		this.searchTerm = "";
 	}
 
 	getDefaultRecipe(): Recipes {
@@ -46,10 +49,12 @@ export class RecipeFormComponent {
 		this.searchVisible = true;
 	}
 
-	getSearch(result: Results) {
+	getSearch(result: Results | null) {
 		this.searchVisible = false;
-		this.formIngredient.name = result.name;
-		this.formIngredient.productId = result.id;
+		if (result != null) {
+			this.formIngredient.name = result.name;
+			this.formIngredient.productId = result.id;
+		}
 	}
 }
 
