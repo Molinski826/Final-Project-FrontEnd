@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IngredientService } from '../../services/ingredient.service';
 import { Users } from '../../models/users';
 import { FormsModule } from '@angular/forms';
+import { Intolerances } from '../../models/intolerances';
 
 @Component({
   selector: 'app-account-page',
@@ -16,6 +17,9 @@ export class AccountPageComponent {
 	user: Users = {} as Users;
 	formUser: Users = {... this.user};
 	editing: boolean = false;
+
+	intolerance:Intolerances = {} as Intolerances; 
+	intolerant:Intolerances = {...this.intolerance};
 
 	ngOnInit() {
 		this.service.getUser().subscribe(
@@ -44,5 +48,12 @@ export class AccountPageComponent {
 			this.editing = false;
 			this.formUser = {... r};
 		});
+	}
+
+	showMeRecipes() {
+		// this.service.getPersonalizedRecipes(this.intolerant).subscribe(diet => {
+			
+		// }
+		// )
 	}
 }

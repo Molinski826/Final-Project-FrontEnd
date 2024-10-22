@@ -6,7 +6,7 @@
 	</h2>
 	<form>
 		<fieldset>
-			<legend>General</legend>
+			<legend>About Me</legend>
 			<div class="split-even">
 				<label for="i-name" class="button-size">Name</label>
 				@if (editing) {
@@ -17,11 +17,35 @@
 			</div>
 		</fieldset>
 		<fieldset>
-			<legend>Dietary</legend>
+			<legend>Dietary Preferences</legend>
 			<h5>
 				<label for="i-diabetic">Diabetes</label>
 				@if (editing) {
-					<input type="checkbox" name="diabetic" id="i-diabetic" [(ngModel)]="formUser.diabetic" />
+					<input type="checkbox" name="diabetic" id="i-intolerances" [(ngModel)]="formUser.diabetic" />
+				}
+			</h5>
+			<h5>
+				<label for="i-gluten">Gluten-Free</label>
+				@if (editing) {
+					<input type="checkbox" name="gluten" id="i-gluten" [(ngModel)]="formUser.gluten" />
+				}
+			</h5>
+			<h5>
+				<label for="i-medit">Whole 30</label>
+				@if (editing) {
+					<input type="checkbox" name="medit" id="i-medit" [(ngModel)]="formUser.medit" />
+				}
+			</h5>
+			<h5>
+				<label for="i-vegi">Vegetarian</label>
+				@if (editing) {
+					<input type="checkbox" name="vegi" id="i-vegi" [(ngModel)]="formUser.vegi" />
+				}
+			</h5>
+			<h5>
+				<label for="i-vegan">Vegan</label>
+				@if (editing) {
+					<input type="checkbox" name="vegan" id="i-vegan" [(ngModel)]="formUser.vegan" />
 				}
 			</h5>
 			@if ((!editing && user.diabetic) || (editing && formUser.diabetic)) {
@@ -44,6 +68,84 @@
 					</div>
 				</div>
 			}
+		</fieldset>
+		<fieldset>
+			<div class="split-even">
+				<legend>Intolerances</legend>
+				<h6>
+					<label for="i-intolerances">Dairy</label>    
+					@if (editing) {
+						<input type="button" name="diary" id="i-intolerances" [(ngModel)]="intolerant.dairy" [checked]="intolerant.dairy"/>
+					}
+				</h6>
+				<h6>
+					<label for="i-intolerances">Egg</label>    
+					@if (editing) {
+						<input type="checkbox" name="egg" id="i-intolerances" [(ngModel)]="intolerant.egg" [checked]="intolerant.egg"/>
+					}
+				</h6>
+				<h6>
+					<label for="i-intolerances">Gluten</label>    
+					@if (editing) {
+						<input type="checkbox" name="gluten" id="i-intolerances" [(ngModel)]="intolerant.gluten" [checked]="intolerant.gluten"/>
+					}
+				</h6>
+				<h6>
+					<label for="i-intolerances">Grain</label>    
+					@if (editing) {
+						<input type="checkbox" name="grain" id="i-intolerances" [(ngModel)]="intolerant.grain" [checked]="intolerant.grain"/>
+					}
+				</h6>
+				<h6>
+					<label for="i-intolerances">Peanut</label>    
+					@if (editing) {
+						<input type="checkbox" name="peanut" id="i-intolerances" [(ngModel)]="intolerant.peanut" [checked]="intolerant.peanut"/>
+					}
+				</h6>
+				<h6>
+					<label for="i-intolerances">Seafood</label>    
+					@if (editing) {
+						<input type="checkbox" name="seafood" id="i-intolerances" [(ngModel)]="intolerant.seafood" [checked]="intolerant.seafood"/>
+					}
+				</h6>
+				<h6>
+					<label for="i-intolerances">Sesame</label>    
+					@if (editing) {
+						<input type="checkbox" name="sesame" id="i-intolerances" [(ngModel)]="intolerant.sesame" [checked]="intolerant.sesame"/>
+					}
+				</h6>
+				<h6>
+					<label for="i-intolerances">Shellfish</label>    
+					@if (editing) {
+						<input type="checkbox" name="shellfish" id="i-intolerances" [(ngModel)]="intolerant.shellfish" [checked]="intolerant.shellfish"/>
+					}
+				</h6>
+				<h6>
+					<label for="i-intolerances">Soy</label>    
+					@if (editing) {
+						<input type="checkbox" name="soy" id="i-intolerances" [(ngModel)]="intolerant.soy" [checked]="intolerant.soy"/>
+					}
+				</h6>
+				<h6>
+					<label for="i-intolerances">Sulfite</label>    
+					@if (editing) {
+						<input type="checkbox" name="sulfite" id="i-intolerances" [(ngModel)]="intolerant.sulfite" [checked]="intolerant.sulfite"/>
+					}
+				</h6>
+				<h6>
+					<label for="i-intolerances">Treenut</label>    
+					@if (editing) {
+						<input type="checkbox" name="treenut" id="i-intolerances" [(ngModel)]="intolerant.treenut" [checked]="intolerant.treenut"/>
+					}
+				</h6>
+				<h6>
+					<label for="i-intolerances">Wheat</label>    
+					@if (editing) {
+						<input type="checkbox" name="wheat" id="i-intolerances" [(ngModel)]="intolerant.wheat" [checked]="intolerant.wheat"/>
+					}
+				</h6>
+				<button (click)="showMeRecipes()" class="btn btn-outline-success">Show Me Recipes</button>
+			</div>
 		</fieldset>
 		@if (editing) {
 			<div class="spread">

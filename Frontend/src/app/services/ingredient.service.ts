@@ -8,6 +8,7 @@ import { IngredientDetails } from '../models/ingredient-details';
 import { ApiClientService } from './api-client.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Users } from '../models/users';
+import { RecipeSearchResults } from '../models/recipe-search-results';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,10 @@ export class IngredientService {
   	getIngredient(id:number, amount:number = 0, unit:string = ""):Observable<IngredientDetails> {
     	return this.http.get<IngredientDetails>(`${this.url}/api/ingredient/${id}?amount=${amount}&unit=${unit}`);
   	}
+
+	getPersonalizedRecipes(diet:string = "", intolerances:string = "", number:number = 100):Observable<RecipeSearchResults> {
+		return this.http.get<RecipeSearchResults>(`${this.url}/api/recipes/complexSearch?number=${number}&diet=${diet}&intolerances=${intolerances}`)
+	}
 
   	searchIngredient(name:string):Observable<SearchResults> {
   		return this.http.get<SearchResults>(`${this.url}/api/search/${name}`)

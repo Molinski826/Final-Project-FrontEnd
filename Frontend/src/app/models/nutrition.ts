@@ -7,7 +7,5 @@ export interface Nutrition {
         "properties":Nutrient[],
         "flavonoids":Nutrient [],
         "caloricBreakdown":CaloricBreakdown,
-        "weightPerServing":Nutrient
-      
-      
+        "weightPerServing":Nutrient  
 }

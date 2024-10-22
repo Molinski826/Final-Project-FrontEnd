@@ -18,6 +18,4 @@ export interface IngredientDetails {
         "image":string,
         "nutrition":Nutrition,
         "categoryPath":string []
-      
-      
 }
