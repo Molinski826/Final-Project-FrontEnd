@@ -1,0 +1,9 @@
+main > * {
+	margin-bottom: .5rem;
+}
+main > :last-child {
+	margin-bottom: 0px;
+}
+.tab {
+	font-size: 1.5em;
+}

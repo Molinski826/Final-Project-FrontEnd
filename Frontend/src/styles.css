@@ -97,3 +97,22 @@ a {
 .danger {
 	color: var(--bs-danger);
 }
+
+.tab > input {
+	opacity: 0;
+	width: 0px;
+}
+
+.tab > input + * {
+	border-bottom: .375rem solid transparent;
+	cursor: pointer;
+}
+
+.tab > input:checked + * {
+	border-color: var(--bs-primary);
+	color: var(--bs-primary)
+}
+
+.tab > input:disabled + * {
+	color: var(--bs-secondary);
+}

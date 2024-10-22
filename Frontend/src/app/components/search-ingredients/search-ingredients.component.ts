@@ -14,6 +14,7 @@ import { Results } from '../../models/results';
 })
 export class SearchIngredientsComponent {
 @Input() search: string = "";
+@Input() embedded: boolean = false;
 @Output() selected:EventEmitter<Results|null> = new EventEmitter<Results|null>();
 
 constructor(private service:IngredientService){}
