@@ -116,3 +116,28 @@ a {
 .tab > input:disabled + * {
 	color: var(--bs-secondary);
 }
+
+/* page transitions */
+@keyframes slide-out {
+	to {
+		transform: translateX(5rem);
+	}
+}
+@keyframes slide-in {
+	from {
+		transform: translateX(-5rem);
+	}
+}
+::view-transition-old(main),
+::view-transition-new(main) {
+	animation-duration: 500ms;
+	animation-name: -ua-view-transition-fade-in, slide-in;
+}
+::view-transition-old(main) {
+	animation-name: -ua-view-transition-fade-out, slide-out;
+}
+
+#content {
+	view-transition-name: main;
+}
+/* ---------------- */
