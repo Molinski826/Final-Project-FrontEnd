@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Ingredients } from '../../models/ingredients';
 import { IngredientService } from '../../services/ingredient.service';
+import { IngredientDetails } from '../../models/ingredient-details';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ingredient',
@@ -11,16 +13,16 @@ import { IngredientService } from '../../services/ingredient.service';
 })
 export class IngredientComponent {
 
-  constructor(private service:IngredientService){}
+  constructor(private service:IngredientService, private route:ActivatedRoute){}
 
-  @Input() ingredient:Ingredients|null = null
+  ingredient:IngredientDetails = {} as IngredientDetails
 
   ngOnInit(){
-    this.getIngredient();
-  }
-
-
-  getIngredient(){
+    this.route.paramMap.subscribe(response => {
+      this.service.getIngredient(parseInt(response.get("id")?? ""))
+      .subscribe(response => this.ingredient= response)
+    });
+  
 
   }
 }
