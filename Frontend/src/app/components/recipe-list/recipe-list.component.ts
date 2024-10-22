@@ -17,8 +17,14 @@ export class RecipeListComponent {
   constructor(private http:IngredientService) {}
 
   ngOnInit(){
+	this.updateRecipes();
+  }
+
+  updateRecipes() : void {
     this.http.getRecipes().subscribe(response => this.recipeList = response);
   }
 
-
+  removeRecipe(id: number) : void {
+	this.http.deleteRecipe(id).subscribe(_ => this.updateRecipes());
+  }
 }

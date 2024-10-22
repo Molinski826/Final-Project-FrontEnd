@@ -64,4 +64,8 @@ export class IngredientService {
 	updateUser(user: Users) : Observable<Users> {
 		return this.api.put(`${this.url}/api/user`, user);
 	}
+
+	deleteRecipe(id: number) : Observable<Object> {
+		return this.api.delete(`${this.url}/api/Recipes/${id}`);
+	}
 }

@@ -1,7 +1,24 @@
 <main class="main-box container">
 	<h1>My Recipes</h1>
 	<hr>
-	@for(r of recipeList; track r.id){
-		<a routerLink="/Recipe/{{r.id}}" class="result">{{r.name}}</a>   
-	}
+	<table class="table">
+		<thead>
+			<tr>
+				<td class="deco"></td>
+				<td>Name</td>
+				<td class="small-col"></td>
+			</tr>
+		</thead>
+		<tbody>
+			@for(r of recipeList; track r.id){
+				<tr class="result">
+					<td class="deco">&#xF231;</td>
+					<td routerLink="/Recipe/{{r.id}}">{{r.name}}</td>
+					<td class="small-col">
+						<button type="button" class="btn btn-outline-danger icon" (click)="removeRecipe(r.id)">&#xF5DE;</button>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
 </main>

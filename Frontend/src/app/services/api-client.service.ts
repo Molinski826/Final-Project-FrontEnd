@@ -38,4 +38,14 @@ export class ApiClientService {
 			throw e;
 		}));
 	}
+
+	delete(path: string) : Observable<Object> {
+		return this.http.delete(path, {withCredentials: true}).pipe(catchError((e, o) => {
+			if (e.status == HttpStatusCode.Unauthorized) {
+				this.loggedOutError.emit(path);
+				return of();
+			}
+			throw e;
+		}));
+	}
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IngredientService } from '../../services/ingredient.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Recipes } from '../../models/recipes';
 import { IngredientDetails } from '../../models/ingredient-details';
 import { forkJoin, Observable } from 'rxjs';
@@ -24,7 +24,7 @@ insulinPerServing:number = 0;
 bloodGlucose:number = 0;
 user:Users = {} as Users;
 
-  constructor(private service:IngredientService, private route:ActivatedRoute){}
+  constructor(private service:IngredientService, private route:ActivatedRoute, private routing:Router){}
 
   ngOnInit(){
     this.route.paramMap.subscribe(response => {
@@ -65,6 +65,12 @@ user:Users = {} as Users;
   updateInsulinDose() : void {
 	this.insulinPerServing = this.carbsPerServing / this.user.carbRatio;
 	this.insulinPerServing += (this.bloodGlucose - 120) / this.user.correctionFactor;
+  }
+
+  deleteRecipe() : void {
+	this.service.deleteRecipe(this.recipe.id).subscribe(_ => {
+		this.routing.navigate(["/MyRecipes"]);
+	});
   }
 
 }

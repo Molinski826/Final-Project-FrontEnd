@@ -1,5 +1,8 @@
 <main class="container main-box">
-	<h1>{{recipe.name}}</h1>
+	<h1 class="spread">
+		<span>{{recipe.name}}</span>
+		<button class="btn btn-outline-danger icon" (click)="deleteRecipe()">&#xF5DE;</button>
+	</h1>
 	<h2><span>{{recipe.servings}}</span> Servings</h2>
 	<hr>
 	<h3>Ingredients</h3>
