@@ -1,3 +1,18 @@
-<input type="text" [(ngModel)]="email">Email
-<input type="password" [(ngModel)]="password">Password
-<button (click)="login()">Login</button>
+<form class="main-box">
+	@if (!registering) {
+		<h3>Login</h3>
+		<div class="input-group">
+			<label for="i-email" class="input-group-text">Email</label>
+			<input type="text" class="form-control" [(ngModel)]="email" name="email" id="i-email" [disabled]="loading">
+		</div>
+		<div class="input-group">
+			<label for="i-password" class="input-group-text">Password</label>
+			<input type="password" class="form-control" [(ngModel)]="password" name="password" id="i-password" [disabled]="loading">
+		</div>
+		<button (click)="login()" type="submit" class="btn btn-primary full-width" [disabled]="loading">Login</button>
+		<a (click)="showRegistration()" class="registration">Create an Account</a>
+	} @else {
+		<app-register (registered)="registrationClosed($event)" />
+	}
+	<app-loading-overlay [visible]="loading" />
+</form>

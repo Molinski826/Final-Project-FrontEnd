@@ -1,8 +1,11 @@
 <main class="container">
 	<aside>
-		<app-login class="main-box"></app-login>
+		@if (!loggedIn()) {
+			<app-login />
+		} @else {
+			<app-welcome />
+		}
 	</aside>
-	<img src="images/plate.png" alt="plate with food"> 
 	<header>
 		<h1>satiety.</h1>
 		<p>by Joey, Wren, Martina</p>

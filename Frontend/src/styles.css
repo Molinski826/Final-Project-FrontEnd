@@ -8,6 +8,8 @@ body {
 	background-color: #fff;
 	padding: .5rem;
 	box-shadow: -5px 9px 23px 0px rgba(0, 65, 14, 0.3);
+	position: relative;
+	overflow: hidden;
 }
 
 main.main-box {
@@ -86,4 +88,12 @@ a {
 .btn-primary, .btn-outline-primary {
 	--bs-btn-hover-color: #fff;
 	--bs-btn-active-color: #fff;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.danger {
+	color: var(--bs-danger);
 }

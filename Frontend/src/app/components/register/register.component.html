@@ -1,7 +1,37 @@
-<input type="text" [(ngModel)]="email">Email
-<input type="password" [(ngModel)]="password">Password
-<input type="password" [(ngModel)]="confirm">Confirm
-@if (password != confirm) {
-    <p>Passwords do not match</p>
-}
-<button (click)="register()">Register</button>
+<form>
+	<h3>Register</h3>
+
+	<div>
+		<div class="input-group">
+			<label class="input-group-text">Email</label>
+			<input type="text" [(ngModel)]="email" class="form-control" name="email" id="i-email" [disabled]="loading">
+		</div>
+		@if (!email) {
+			<p class="form-text danger validation">Required</p>
+		}
+	</div>
+
+	<div>
+		<input type="password" [(ngModel)]="password" class="form-control" name="password" id="i-password" 
+		(ngModelChange)="validatePassword()" placeholder="Password" [disabled]="loading">
+
+		<div class="validation">
+			@for (error of passwordError; track $index) {
+				<p class="form-text danger">{{error}}</p>
+			}
+		</div>
+		<input type="password" [(ngModel)]="confirm" class="form-control" name="confirm" id="i-confirm" 
+		placeholder="Confirm Password" [disabled]="loading">
+
+		@if (password != confirm) {
+			<p class="form-text danger validation">Passwords do not match</p>
+		}
+	</div>
+
+	<div class="split-even">
+		<button (click)="goBack()" type="button" class="btn btn-outline-primary" [disabled]="loading">&lt; Back</button>
+		<button (click)="register()" type="submit" class="btn btn-primary" [disabled]="loading">Create Account</button>
+	</div>
+
+	<app-loading-overlay [visible]="loading" />
+</form>

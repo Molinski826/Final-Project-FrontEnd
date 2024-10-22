@@ -1,0 +1,15 @@
+form > * {
+	margin-bottom: .5rem;
+}
+form > :last-child {
+	margin-bottom: 0px;
+}
+h3 {
+	text-align: center;
+}
+.registration {
+	text-align: center;
+	display: block;
+	font-size: .9em;
+	cursor: pointer;
+}

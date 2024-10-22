@@ -80,3 +80,26 @@ footer {
   	margin-right: auto;
   	width: 50%;
 } */
+
+.login {
+	position: relative;
+}
+
+.login app-login {
+	position: absolute;
+	top: calc(100% + 1rem);
+	right: 0px;
+	z-index: 120;
+	width: 300px;
+	display: block;
+	opacity: 0;
+	transform: translateY(-2rem);
+	transition: transform .25s, opacity .25s;
+	pointer-events: none;
+}
+
+.login app-login.visible {
+	transform: translateY(0rem);
+	opacity: 1;
+	pointer-events: all;
+}

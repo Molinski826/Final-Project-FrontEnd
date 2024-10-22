@@ -7,8 +7,18 @@
 			<a routerLink="/MyAccount">My Account</a>
 		}
 	</nav>
-	<a routerLink="/Login" class="login"><button class="btn btn-primary">Login</button></a>
-	<a routerLink="/Register" class="register"><button class="btn btn-primary">Register</button></a>
+	<div class="login">
+		@if (isLoggedIn()) {
+			<button class="btn btn-outline-primary" (click)="logout()">
+				<span>&lt; Logout</span>
+			</button>
+		} @else {
+			<button class="btn btn-primary" (click)="toggleLogin()">
+				Login
+			</button>
+		}
+		<app-login [class.visible]="loginVisible()" />
+	</div>
 </header>
 <div id="content">
 	<router-outlet></router-outlet>

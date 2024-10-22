@@ -1,0 +1,16 @@
+.validation p {
+	margin: 0px;
+}
+.validation {
+	margin-bottom: .5rem;
+	font-size: .8em;
+}
+form > * {
+	margin-bottom: .5rem;
+}
+form > :last-child {
+	margin-bottom: 0px;
+}
+h3 {
+	text-align: center;
+}

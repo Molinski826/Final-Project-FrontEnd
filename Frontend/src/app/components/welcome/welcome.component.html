@@ -1,0 +1,12 @@
+<div class="main-box">
+	<div>
+		<h3>Welcome, <span class="secondary">{{user.name}}</span></h3>
+		<hr>
+	</div>
+	<a class="btn btn-primary" routerLink="/MyRecipes">My Recipes</a>
+	<a class="btn btn-primary" routerLink="/Recipe">Add Recipe</a>
+	<a class="btn btn-primary" routerLink="/MyAccount">My Account</a>
+	<a class="btn btn-outline-primary" (click)="logout()">
+		<span>&lt; Logout</span>
+	</a>
+</div>
