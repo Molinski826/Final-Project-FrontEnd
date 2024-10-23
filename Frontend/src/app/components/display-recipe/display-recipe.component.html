@@ -18,11 +18,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			@for (ingredients of extendedIngredients; track $index) {
+			@for (ingredients of recipe.recipeIngredients; track $index) {
 				<tr>
 					<td>{{capitalize(ingredients.name)}}</td>
 					<td><span>{{ingredients.amount}}</span> <span>{{ingredients.unit}}</span></td>
-					<td class="small-col"><a class="icon no-print" routerLink="/Ingredient/{{ingredients.id}}">&#xF431;</a></td>
+					<td class="small-col"><a class="icon no-print" routerLink="/Ingredient/{{ingredients.productId}}">&#xF431;</a></td>
 				</tr>
 			}
 		</tbody>

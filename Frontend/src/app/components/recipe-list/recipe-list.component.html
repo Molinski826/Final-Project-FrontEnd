@@ -1,20 +1,26 @@
 <main class="main-box container">
 	<h1>My Recipes</h1>
 	<hr>
-	<table class="table">
+	<table class="table" matSort (matSortChange)="sortChanged($event)">
 		<thead>
 			<tr>
-				<td class="deco"></td>
-				<td>Name</td>
-				<td class="small-col"></td>
-				<td class="small-col"></td>
+				<th class="deco"></th>
+				<th class="small-col" mat-sort-header="priority">##</th>
+				<th mat-sort-header="name">Name</th>
+				<th mat-sort-header="calories">Calories</th>
+				<th mat-sort-header="carbs">Carbs</th>
+				<th class="small-col"></th>
+				<th class="small-col"></th>
 			</tr>
 		</thead>
 		<tbody>
-			@for(r of recipeList; track r.id){
+			@for(r of sortedRecipes; track r){
 				<tr class="result">
 					<td class="deco">&#xF231;</td>
+					<td class="small-col">{{r.priority}}</td>
 					<td routerLink="/Recipe/{{r.id}}">{{r.name}}</td>
+					<td routerLink="/Recipe/{{r.id}}">{{r.calories}}</td>
+					<td routerLink="/Recipe/{{r.id}}">{{r.carbs}}</td>
 					<td class="small-col">
 						<a class="edit icon" [routerLink]="getEditLink(r.id)">&#xF4C9;</a>
 					</td>
