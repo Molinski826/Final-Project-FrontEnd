@@ -50,3 +50,8 @@
 .edit:hover {
 	color: unset;
 }
+
+.buttons {
+	display: flex;
+	gap: .5rem;
+}

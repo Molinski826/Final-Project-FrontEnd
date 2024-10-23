@@ -1,7 +1,17 @@
 <main class="main-box container">
 	<h1>My Recipes</h1>
 	<hr>
-	<button (click)="toggleReordering()">Reorder</button>
+	<div class="buttons">
+		<button (click)="toggleReordering()" class="btn btn-primary btn-pulse">
+			@if (reordering) {
+				Save Changes
+			} @else {
+				Reorder
+			}
+		</button>
+		<button class="btn btn-primary"  [routerLink]="getRandomRecipe()">Random</button>
+		<button class="btn btn-primary icon" routerLink="/Recipe">&#xF64D;</button>
+	</div>
 	<table class="table" matSort (matSortChange)="sortChanged($event)">
 		<thead>
 			<tr>

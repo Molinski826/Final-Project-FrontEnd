@@ -1,18 +1,5 @@
 {
-  "routes": [
-    {
-      "route": "/*",
-      "methods": [
-        "get"
-      ],
-      "rewrite": "/"
-    },
-    {
-      "route": "/Recipe",
-      "methods": [
-        "get"
-      ],
-      "rewrite": "/"
-    }
-  ]
+  "navigationFallback": {
+    "rewrite": "/"
+  }
 }

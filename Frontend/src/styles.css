@@ -121,6 +121,20 @@ a {
 	width: unset !important;
 }
 
+.btn-pulse {
+    box-shadow: 0px 0px 0px 20px transparent;
+    transition: box-shadow .5s;
+}
+
+.btn-pulse:active {
+    box-shadow: 0px 0px 0px 0px var(--bs-btn-bg);
+    transition: box-shadow 0s;
+}
+
+.btn-outline-primary.btn-pulse:active {
+    --bs-btn-bg: var(--bs-btn-border-color);
+}
+
 /* page transitions */
 @keyframes slide-out {
 	to {

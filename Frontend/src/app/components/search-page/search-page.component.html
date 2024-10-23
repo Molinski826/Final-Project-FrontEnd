@@ -1,6 +1,7 @@
 <main class="container main-box">
 	<h1>Search</h1>
 	<hr>
+	<!--
 	<div class="split-even">
 		<div class="tab">
 			<input type="radio" name="searchtab" [checked]="!recipeSearch" id="searchtab-ingredients" (change)="recipeSearch = false" />
@@ -11,12 +12,13 @@
 			<label for="searchtab-recipes">Recipes</label>
 		</div>
 	</div>
+	-->
 	@if (!recipeSearch) {
 		<form>
 			<div class="input-group">
 				<input type="text" [(ngModel)]="searchTerm" name="ingredientSearch" 
 				id="i-ingredientSearch" class="form-control"/>
-				<button class="btn btn-primary" (click)="updateSearch()">Search</button>
+				<button class="btn btn-primary btn-pulse" (click)="updateSearch()">Search</button>
 			</div>
 		</form>
 		<app-search-ingredients [search]="submittedSearch" (selected)="goToPage($event)" [embedded]="true" />

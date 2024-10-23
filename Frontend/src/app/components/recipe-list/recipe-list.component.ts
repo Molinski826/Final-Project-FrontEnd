@@ -97,4 +97,8 @@ export class RecipeListComponent {
   compare(a: number | string, b: number | string, isAsc: boolean): number {
 	return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
+
+  getRandomRecipe() : string {
+	return "/Recipe/" + this.recipeList[Math.floor(Math.random() * this.recipeList.length)].id;
+  }
 }
