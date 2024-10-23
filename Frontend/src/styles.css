@@ -117,6 +117,10 @@ a {
 	color: var(--bs-secondary);
 }
 
+.shrink-col {
+	width: unset !important;
+}
+
 /* page transitions */
 @keyframes slide-out {
 	to {

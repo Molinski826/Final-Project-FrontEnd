@@ -20,7 +20,7 @@ export class SearchPageComponent {
 
 	goToPage(result:Results|null) {
 		if (result != null) {
-			this.router.navigate(["/Ingredients/", result.id]);
+			this.router.navigate(["/Ingredient/", result.id]);
 		}
 	}
 

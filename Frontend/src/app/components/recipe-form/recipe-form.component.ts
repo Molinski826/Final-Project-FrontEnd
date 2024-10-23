@@ -56,5 +56,9 @@ export class RecipeFormComponent {
 			this.formIngredient.productId = result.id;
 		}
 	}
+	
+	capitalize(text:string): string {
+		return text.split(" ").map(s => s.charAt(0).toLocaleUpperCase() + s.slice(1)).join(" ");
+	  }
 }
 

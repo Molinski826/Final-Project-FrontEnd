@@ -4,7 +4,7 @@
 		<hr>
 	}
 	@for(r of results.results; track $index){
-		<P class="result" (click)="addIngredient(r.name)">{{r.name}}</P>
+		<P class="result" (click)="addIngredient(r.name)">{{capitalize(r.name)}}</P>
 	}
 	@if (!results.results || results.results.length == 0) {
 		<p class="big">No Results</p>

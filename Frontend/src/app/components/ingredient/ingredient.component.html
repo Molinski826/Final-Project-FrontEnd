@@ -1,5 +1,57 @@
-@if(ingredient != null){
-
-    <p>{{ingredient.name}}</p>
-
-}
+<main class="container main-box">
+	<div class="info">
+		<img [src]="getImageFor(ingredient.image)" />
+		<div>
+			<h1>{{capitalize(ingredient.name)}}</h1>
+			<hr>
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>Serving Size: </td>
+						<td>
+							<span>{{ingredient.nutrition.weightPerServing.amount}}</span>
+							<span>&nbsp;{{ingredient.nutrition.weightPerServing.unit}}</span>
+						</td>
+					</tr>
+					<tr>
+						<td>Category: </td>
+						<td>{{capitalize(ingredient.categoryPath[0])}}</td>
+					</tr>
+					<tr>
+						<td>Aisle: </td>
+						<td>{{capitalize(ingredient.aisle)}}</td>
+					</tr>
+					<tr>
+						<td>Consistency: </td>
+						<td>{{capitalize(ingredient.consistency)}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<a class="wiki" target="_blank" [href]="getWikipediaSearch(ingredient.name)">
+				Find on Wikipedia <i class="bi bi-box-arrow-up-right"></i>
+			</a>
+		</div>
+	</div>
+	<h3>Nutrients</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<td>Name</td>
+				<td>Amount</td>
+				<td class="shrink-col">%DV</td>
+			</tr>
+		</thead>
+		<tbody>
+			@for (nutrient of ingredient.nutrition.nutrients; track $index) {
+				<tr>
+					<td>{{nutrient.name}}</td>
+					<td>
+						<span>{{nutrient.amount}}</span>
+						<span>&nbsp;{{nutrient.unit}}</span>
+					</td>
+					<td class="shrink-col">{{nutrient.percentOfDailyNeeds}} %</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</main>

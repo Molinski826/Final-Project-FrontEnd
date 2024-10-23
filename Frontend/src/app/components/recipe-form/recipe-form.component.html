@@ -28,7 +28,7 @@
 				<tbody>
 					@for (ingredient of formRecipe.recipeIngredients; track $index) {
 						<tr>
-							<td>{{ingredient.name}}</td>
+							<td>{{capitalize(ingredient.name)}}</td>
 							<td><span>{{ingredient.amount}}</span>&nbsp;<span>{{ingredient.unit}}</span></td>
 							<td class="small-col">
 								<button type="button" class="btn btn-outline-danger icon" (click)="removeIngredient($index)">&#xF5DE;</button>
@@ -47,7 +47,7 @@
 			<div class="split-even" style="margin-top:.5rem; margin-left:.75rem;">
 				<div>
 					<p>Name</p>
-					<p class="button-size">&nbsp;{{formIngredient.name}}</p>
+					<p class="button-size">&nbsp;{{capitalize(formIngredient.name)}}</p>
 				</div>
 				<div>
 					<p>Amount</p>

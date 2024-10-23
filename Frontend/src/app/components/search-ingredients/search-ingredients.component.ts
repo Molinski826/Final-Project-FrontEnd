@@ -33,4 +33,8 @@ exit() : void {
 	this.selected.emit(null);
 }
 
+capitalize(text:string): string {
+	return text.split(" ").map(s => s.charAt(0).toLocaleUpperCase() + s.slice(1)).join(" ");
+}
+
 }

@@ -1,0 +1,22 @@
+.info img {
+	width: 400px;
+	height: 400px;
+}
+
+.info > div {
+	flex-grow: 1;
+}
+
+.info {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.info a {
+	text-decoration: none;
+}
+
+.info a i {
+	font-size: .75em;
+}
