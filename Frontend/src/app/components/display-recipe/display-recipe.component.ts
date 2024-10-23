@@ -40,25 +40,7 @@ user:Users = {} as Users;
 
   setRecipe(recipe:Recipes) : void {
 	this.recipe = recipe;
-	let extended: Observable<IngredientDetails>[] = [];
-	for(let ingredient of recipe.recipeIngredients) {
-		extended.push(this.service.getIngredient(ingredient.productId, ingredient.amount, ingredient.unit));
-	}
-	forkJoin(extended).subscribe(result => this.processIngredients(result));
-  }
-
-  processIngredients(ingredients:IngredientDetails[]) : void {
-	this.extendedIngredients = ingredients;
-	let totalCarbs:number = 0;
-	for (let ingredient of ingredients) {
-		for (const nutrient of ingredient.nutrition.nutrients) {
-			if (nutrient.name == "Carbohydrates") {
-				totalCarbs += nutrient.amount;
-				break;
-			}
-		}
-	}
-	this.carbsPerServing = totalCarbs / this.recipe.servings;
+	this.carbsPerServing = recipe.carbs / recipe.servings;
 	this.updateInsulinDose();
   }
 

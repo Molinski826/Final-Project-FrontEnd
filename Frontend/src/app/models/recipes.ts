@@ -7,4 +7,7 @@ export interface Recipes {
     userid:string | null;
 	servings:number;
 	recipeIngredients: Ingredients[];
+	priority:number;
+	carbs:number;
+	calories:number;
 }
