@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap } from 'rxjs';
+import { of, Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { SearchResults } from '../models/search-results';
 import { Recipes } from '../models/recipes';
@@ -31,6 +31,9 @@ export class IngredientService {
 	}
 
   	searchIngredient(name:string):Observable<SearchResults> {
+		if (!name || !name.length) {
+			return of();
+		}
   		return this.http.get<SearchResults>(`${this.url}/api/search/${name}`)
 	}
 
@@ -76,5 +79,9 @@ export class IngredientService {
 
 	updateRecipe(id: string, recipe: Recipes) : Observable<Object> {
 		return this.api.put(`${this.url}/api/Recipes/${id}`, recipe);
+	}
+
+	updateRecipeOrder(order: any) : Observable<Object> {
+		return this.api.post(`${this.url}/api/Recipes/reorder`, order);
 	}
 }

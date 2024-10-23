@@ -1,6 +1,7 @@
 <main class="main-box container">
 	<h1>My Recipes</h1>
 	<hr>
+	<button (click)="toggleReordering()">Reorder</button>
 	<table class="table" matSort (matSortChange)="sortChanged($event)">
 		<thead>
 			<tr>
@@ -13,9 +14,9 @@
 				<th class="small-col"></th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody cdkDropList (cdkDropListDropped)="dropped($event)" [cdkDropListDisabled]="!reordering">
 			@for(r of sortedRecipes; track r){
-				<tr class="result">
+				<tr class="result" cdkDrag>
 					<td class="deco">&#xF231;</td>
 					<td class="small-col">{{r.priority}}</td>
 					<td routerLink="/Recipe/{{r.id}}">{{r.name}}</td>

@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
 import { Recipes } from '../../models/recipes';
-import { HttpClient } from '@angular/common/http';
 import { MatSortModule, Sort } from '@angular/material/sort';
 import { IngredientService } from '../../services/ingredient.service';
 import { RouterLink } from '@angular/router';
-import { from } from 'rxjs';
+import {CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-recipe-list',
   standalone: true,
-  imports: [RouterLink, MatSortModule],
+  imports: [RouterLink, MatSortModule, CdkDrag, CdkDropList],
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.css'
 })
 export class RecipeListComponent {
   recipeList: Recipes [] = [];
   sortedRecipes: Recipes[] = [];
+  reordering: boolean = false;
 
   constructor(private http:IngredientService) {}
 
@@ -40,6 +40,11 @@ export class RecipeListComponent {
 
   sortChanged(sort: Sort) {
 	const data = [...this.recipeList];
+
+	if (this.reordering && (sort.active != 'priority' || sort.direction != 'asc')) {
+		return;
+	}
+
     if (!sort.active || sort.direction === '') {
       this.sortedRecipes = data;
       return;
@@ -60,6 +65,33 @@ export class RecipeListComponent {
 			return 0;
 		}
 	});
+  }
+
+  toggleReordering() {
+	this.reordering = !this.reordering;
+	if (this.reordering) {
+		this.sortChanged({active: 'priority', direction: 'asc'});
+	} else {
+		let map: any = {}
+		for (const recipe of this.recipeList) {
+			map["" + recipe.id] = recipe.priority;
+		}
+		this.http.updateRecipeOrder(map).subscribe(console.log);
+	}
+  }
+
+  dropped(drop: CdkDragDrop<any, any, any>) {
+	let replacing = this.sortedRecipes[drop.currentIndex];
+	let replacer = this.sortedRecipes[drop.previousIndex];
+	this.sortedRecipes[drop.currentIndex] = replacer;
+	this.sortedRecipes[drop.previousIndex] = replacing;
+
+	let i:number = 0;
+	for (const recipe of this.sortedRecipes) {
+		recipe.priority = i++;
+	}
+
+	this.sortChanged({active: 'priority', direction: 'asc'});
   }
 
   compare(a: number | string, b: number | string, isAsc: boolean): number {
