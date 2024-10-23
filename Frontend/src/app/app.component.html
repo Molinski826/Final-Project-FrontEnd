@@ -1,14 +1,17 @@
 <header class="no-print">
-	<nav>
-		<a routerLink="/" class="home">Satiety</a>
+	<button class="icon small-only btn btn-primary btn-pulse" id="menu" (click)="displayDropdown = !displayDropdown">&#xF479;</button>
+	<nav [class.open]="displayDropdown">
+		<a routerLink="/" class="home big-only">Satiety</a>
+		<a class="small-only" routerLink="/">Home</a>
 		<a routerLink="/Search">Search</a>
 		@if (isLoggedIn()) {
 			<a routerLink="/Recipe">Add Recipe</a>
 			<a routerLink="/MyRecipes">My Recipes</a>
 			<a routerLink="/MyAccount">My Account</a>
+			<a (click)="logout()" class="small-only">Logout</a>
 		}
 	</nav>
-	<div class="login">
+	<div class="login big-only">
 		@if (isLoggedIn()) {
 			<button class="btn btn-outline-primary" (click)="logout()">
 				<span>&lt; Logout</span>

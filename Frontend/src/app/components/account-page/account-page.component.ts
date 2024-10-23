@@ -49,11 +49,4 @@ export class AccountPageComponent {
 			this.formUser = {... r};
 		});
 	}
-
-	showMeRecipes() {
-		// this.service.getPersonalizedRecipes(this.intolerant).subscribe(diet => {
-			
-		// }
-		// )
-	}
 }

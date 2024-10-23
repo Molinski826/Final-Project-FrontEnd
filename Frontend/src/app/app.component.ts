@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { NavigationStart, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { IngredientComponent } from './components/ingredient/ingredient.component';
 import { RecipeFormComponent } from "./components/recipe-form/recipe-form.component";
 import { SearchIngredientsComponent } from "./components/search-ingredients/search-ingredients.component";
@@ -17,6 +17,7 @@ import { LoginComponent } from "./components/login/login.component";
 })
 export class AppComponent {
 	title = 'Satiety';
+	displayDropdown: boolean = false;
 	constructor(private router: Router, private api:ApiClientService, private service:IngredientService) { }
 
 	showLoginWidget:boolean = false;
@@ -25,6 +26,12 @@ export class AppComponent {
 		this.api.loggedOutError.subscribe(_ => {
 			if (this.router.url != "") {
 				this.router.navigate(["/"]);
+			}
+		});
+		this.router.events.subscribe(e => {
+			if (e instanceof NavigationStart) {
+				this.showLoginWidget = false;
+				this.displayDropdown = false;
 			}
 		});
 	}
