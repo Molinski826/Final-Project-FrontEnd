@@ -145,3 +145,22 @@ a {
 	view-transition-name: main;
 }
 /* ---------------- */
+
+
+@media print {
+	.no-print {
+		opacity: 0;
+	}
+
+	body {
+		background: #fff;
+	}
+
+	.main-box {
+		box-shadow: none;
+	}
+
+	.container {
+		max-width: none;
+	}
+}

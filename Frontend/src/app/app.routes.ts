@@ -10,6 +10,7 @@ import { SearchPageComponent } from './components/search-page/search-page.compon
 
 export const routes: Routes = [
     {path:"", component:HomeComponent},
+	{path:"Recipe/:id/edit", component:RecipeFormComponent},
     {path:"Recipe/:id", component: DisplayRecipeComponent}, 
     {path:"Recipe", component:RecipeFormComponent},
     {path:"MyRecipes", component:RecipeListComponent},

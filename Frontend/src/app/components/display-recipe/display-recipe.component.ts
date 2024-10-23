@@ -76,4 +76,8 @@ user:Users = {} as Users;
   capitalize(text:string): string {
 	return text.split(" ").map(s => s.charAt(0).toLocaleUpperCase() + s.slice(1)).join(" ");
   }
+
+  printMe(): void {
+	window.print();
+  }
 }

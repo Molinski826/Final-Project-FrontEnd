@@ -27,4 +27,8 @@ export class RecipeListComponent {
   removeRecipe(id: number) : void {
 	this.http.deleteRecipe(id).subscribe(_ => this.updateRecipes());
   }
+
+  getEditLink(id: number) : string {
+	return "/Recipe/" + id + "/edit";
+  }
 }

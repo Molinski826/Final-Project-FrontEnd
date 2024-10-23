@@ -5,26 +5,45 @@ import { Ingredients } from '../../models/ingredients';
 import { Results } from '../../models/results';
 import { SearchIngredientsComponent } from "../search-ingredients/search-ingredients.component";
 import { IngredientService } from '../../services/ingredient.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-recipe-form',
 	standalone: true,
-	imports: [FormsModule, SearchIngredientsComponent],
+	imports: [FormsModule, SearchIngredientsComponent, RouterLink],
 	templateUrl: './recipe-form.component.html',
 	styleUrl: './recipe-form.component.css'
 })
 export class RecipeFormComponent {
-	constructor(private service:IngredientService, private router:Router) {}
+	constructor(private service:IngredientService, private router:Router, private routing:ActivatedRoute) {}
 
   	formRecipe: Recipes = this.getDefaultRecipe();
 	formIngredient: Ingredients = {} as Ingredients;
 	searchIngredient: string = "";
 	searchTerm: string = "";
 	searchVisible: boolean = false;
+	editing: boolean = false;
+	id: string = "";
+
+	ngOnInit() {
+		this.routing.paramMap.subscribe(map => {
+			if (map.has("id")) {
+				this.id = map.get("id")!;
+				this.editing = true;
+				this.service.getRecipe(this.id).subscribe(
+					r => this.formRecipe = r
+				);
+			}
+		});
+	}
 
 	emitCreate() {
-		this.service.submitRecipe(this.formRecipe).subscribe(o => {
+		const result: Observable<Object> = this.editing ?
+			this.service.updateRecipe(this.id, this.formRecipe) :
+			this.service.submitRecipe(this.formRecipe);
+
+		result.subscribe(o => {
 			let recipe: Recipes = o as Recipes;
 			this.router.navigate(["/Recipe/", recipe.id]);
 		});
@@ -58,7 +77,7 @@ export class RecipeFormComponent {
 	}
 	
 	capitalize(text:string): string {
-		return text.split(" ").map(s => s.charAt(0).toLocaleUpperCase() + s.slice(1)).join(" ");
-	  }
+		return (text) ? text.split(" ").map(s => s.charAt(0).toLocaleUpperCase() + s.slice(1)).join(" ") : "";
+	}
 }
 

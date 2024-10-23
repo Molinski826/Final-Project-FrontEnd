@@ -11,7 +11,7 @@ app-search-ingredients {
 	transition: opacity .25s;
 }
 
-app-search-ingredients.hidden {
+.hidden {
 	opacity: 0;
 	pointer-events: none;
 }

@@ -40,3 +40,13 @@
 .result:nth-child(odd) {
 	background-color: #eee;
 }
+
+.edit {
+	color: inherit;
+	text-decoration: none;
+	transition: color .25s;
+}
+
+.edit:hover {
+	color: unset;
+}

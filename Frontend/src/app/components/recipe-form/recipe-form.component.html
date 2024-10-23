@@ -1,5 +1,11 @@
 <main class="container main-box">
-	<h1>Add a recipe</h1>
+	<h1>
+		@if (editing) {
+			Edit Recipe
+		} @else {
+			Add a recipe
+		}
+	</h1>
 	<hr>
 	<form class="form">
 		<fieldset>
@@ -65,8 +71,14 @@
 		</fieldset>
 		<hr>
 		<div class="spread">
-			<button class="btn btn-outline-primary">&lt; My recipes</button>
-			<button (click)="emitCreate()" class="btn btn-primary">Create Recipe</button>
+			<button class="btn btn-outline-primary" routerLink="/MyRecipes">&lt; My recipes</button>
+			<button (click)="emitCreate()" class="btn btn-primary">
+				@if (editing) {
+					Apply Changes
+				} @else {
+					Create Recipe
+				}
+			</button>
 		</div>
 	</form>
 	<app-search-ingredients [class.hidden]="!searchVisible" [search]="searchIngredient" (selected)="getSearch($event)" />

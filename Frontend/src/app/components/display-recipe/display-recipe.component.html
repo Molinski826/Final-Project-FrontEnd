@@ -1,7 +1,10 @@
 <main class="container main-box">
 	<h1 class="spread">
 		<span>{{recipe.name}}</span>
-		<button class="btn btn-outline-danger icon" (click)="deleteRecipe()">&#xF5DE;</button>
+		<div class="tools no-print">
+			<button class="btn btn-outline-primary icon" (click)="printMe()">&#xF501;</button>
+			<button class="btn btn-outline-danger icon" (click)="deleteRecipe()">&#xF5DE;</button>
+		</div>
 	</h1>
 	<h2><span>{{recipe.servings}}</span> Servings</h2>
 	<hr>
@@ -19,13 +22,13 @@
 				<tr>
 					<td>{{capitalize(ingredients.name)}}</td>
 					<td><span>{{ingredients.amount}}</span> <span>{{ingredients.unit}}</span></td>
-					<td class="small-col"><a class="icon" routerLink="/Ingredient/{{ingredients.id}}">&#xF431;</a></td>
+					<td class="small-col"><a class="icon no-print" routerLink="/Ingredient/{{ingredients.id}}">&#xF431;</a></td>
 				</tr>
 			}
 		</tbody>
 	</table>
 	@if (user.diabetic) {
-		<div class="split-even">
+		<div class="split-even no-print">
 			<div class="input-group">
 				<span class="input-group-text">Blood Glucose: </span>
 				<input type="number" class="form-control" [(ngModel)]="bloodGlucose" name="glucose" (change)="updateInsulinDose()"/>

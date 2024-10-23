@@ -6,3 +6,13 @@ h2 {
 	font-size: 1.2rem;
 	color:#555;
 }
+
+.tools {
+	display: flex;
+	gap: .25rem;
+	align-items: flex-start;
+}
+
+.tools .btn {
+	padding: 0px .25rem;
+}

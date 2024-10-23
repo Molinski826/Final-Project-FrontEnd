@@ -7,6 +7,7 @@
 				<td class="deco"></td>
 				<td>Name</td>
 				<td class="small-col"></td>
+				<td class="small-col"></td>
 			</tr>
 		</thead>
 		<tbody>
@@ -14,6 +15,9 @@
 				<tr class="result">
 					<td class="deco">&#xF231;</td>
 					<td routerLink="/Recipe/{{r.id}}">{{r.name}}</td>
+					<td class="small-col">
+						<a class="edit icon" [routerLink]="getEditLink(r.id)">&#xF4C9;</a>
+					</td>
 					<td class="small-col">
 						<button type="button" class="btn btn-outline-danger icon" (click)="removeRecipe(r.id)">&#xF5DE;</button>
 					</td>
