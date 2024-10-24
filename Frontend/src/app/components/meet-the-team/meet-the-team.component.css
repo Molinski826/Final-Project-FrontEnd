@@ -1,0 +1,23 @@
+h1 {
+    font-family: "Danfo", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:"ELSH" 0;
+    color: #4d5;
+    font-size: 65px;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img:hover {
+    border-radius: 100%;
+    opacity: 60%;
+}
+
+.team {
+    display: flex;
+    justify-content: space-around;
+}

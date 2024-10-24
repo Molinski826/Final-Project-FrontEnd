@@ -1,0 +1,13 @@
+<fieldset>
+    <div class="split-even">
+        <legend>Intolerances</legend>
+        @for (intolerances of types | keyvalue; track $index) {
+            <h6>
+                <label [for]="intolerances.key">{{intolerances.key}}</label>    
+                <input (change)="types.set(intolerances.key, !intolerances.value)" type="checkbox" [name]="intolerances.key" [id]="intolerances.key" [checked]="intolerances.value"/>
+            </h6>
+        }
+        <!-- <button (click)="showMeRecipes()" class="btn btn-outline-success">Show Me Recipes</button> -->
+    </div>
+    <!-- <p>{{}}</p> -->
+</fieldset>
